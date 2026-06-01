@@ -1,20 +1,19 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  nitro: false,
-  tanstackStart: {
-    server: {
-      entry: "server",
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-  vite: {
-    build: {
-      outDir: "dist",
-      emptyOutDir: true,
-      cssMinify: true,
-      target: "es2022",
-    },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    cssMinify: true,
+    target: 'es2022',
   },
 });
