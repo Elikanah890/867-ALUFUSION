@@ -1,6 +1,6 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -172,9 +172,9 @@
     color: transparent;
   }
 }
+
 /* ========================================
    ADDITIONAL CUSTOM STYLES FOR 867 ALUFUSION
-   (Add this to the bottom of your styles.css)
    ======================================== */
 
 /* Better spacing and container consistency */
@@ -382,14 +382,6 @@ footer {
 
 .hover-scale:hover {
   transform: scale(1.02);
-}
-
-/* Gradient text utility */
-.text-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* Badge styling */
