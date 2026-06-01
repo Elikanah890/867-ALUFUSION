@@ -25,7 +25,7 @@ function AboutPage() {
       {/* PAGE HEADER - WITH YOUR hd.jpeg BACKGROUND */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hd.jpeg" alt="Background" className="w-full h-full object-cover" />
+          <img src="/images/hd.jpeg" alt="Background" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-black/75" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
@@ -48,7 +48,7 @@ function AboutPage() {
             <p className="text-base text-muted-foreground mb-4">Our team of skilled technicians, engineers and project managers brings together decades of combined experience, delivering projects that balance beauty, durability and safety.</p>
             <p className="text-base text-muted-foreground">Every project we execute reflects our commitment to precision, professionalism and customer satisfaction.</p>
           </div>
-          <img src="/images/alluminium.jpeg" alt="Team working" className="rounded-3xl shadow-elegant w-full" />
+          <img src="/images/alluminium.jpeg" alt="Team working" className="rounded-3xl shadow-elegant w-full" loading="lazy" />
         </div>
       </section>
 
@@ -129,7 +129,7 @@ function AboutPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Team Member 1 - Using your renamed image */}
             <div className="rounded-2xl overflow-hidden bg-card border border-border">
-              <img src="/team/alufusion-team-1.png" alt="Managing Director" className="w-full aspect-[4/5] object-cover" />
+              <img src="/team/alufusion-team-1.png" alt="Managing Director" className="w-full aspect-[4/5] object-cover" loading="lazy" />
               <div className="p-6">
                 <h3 className="text-xl font-bold">Managing Director</h3>
                 <p className="text-primary font-semibold text-sm mt-1">867 ALUFUSION</p>
@@ -137,7 +137,7 @@ function AboutPage() {
             </div>
             {/* Team Member 2 - Using your renamed image */}
             <div className="rounded-2xl overflow-hidden bg-card border border-border">
-              <img src="/team/alufusion-team-2.png" alt="Head of Operations" className="w-full aspect-[4/5] object-cover" />
+              <img src="/team/alufusion-team-2.png" alt="Head of Operations" className="w-full aspect-[4/5] object-cover" loading="lazy" />
               <div className="p-6">
                 <h3 className="text-xl font-bold">Head of Operations</h3>
                 <p className="text-primary font-semibold text-sm mt-1">867 ALUFUSION</p>
@@ -145,7 +145,7 @@ function AboutPage() {
             </div>
             {/* Team Member 3 - Using your first image again */}
             <div className="rounded-2xl overflow-hidden bg-card border border-border">
-              <img src="/team/alufusion-team-1.png" alt="Lead Engineer" className="w-full aspect-[4/5] object-cover" />
+              <img src="/team/alufusion-team-1.png" alt="Lead Engineer" className="w-full aspect-[4/5] object-cover" loading="lazy" />
               <div className="p-6">
                 <h3 className="text-xl font-bold">Lead Engineer</h3>
                 <p className="text-primary font-semibold text-sm mt-1">867 ALUFUSION</p>

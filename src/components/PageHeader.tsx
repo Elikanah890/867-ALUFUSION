@@ -4,7 +4,7 @@ export function PageHeader({ title, subtitle, image }: { title: string; subtitle
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center text-white overflow-hidden pt-20">
       <div className="absolute inset-0">
-        <img src={image} alt="" className="w-full h-full object-cover" />
+        <img src={image} alt="" className="w-full h-full object-cover" loading="eager" />
         <div className="absolute inset-0 bg-black/65" />
       </div>
       <div className="relative max-w-5xl mx-auto px-6 text-center py-24">

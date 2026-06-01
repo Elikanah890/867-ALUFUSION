@@ -13,7 +13,7 @@ export function Footer() {
               <img 
                 src="/logo/alufusion-logo.png" 
                 alt="867 ALUFUSION Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain" loading="lazy"
                 onError={(e) => {
                   const img = e.target as HTMLImageElement
                   img.style.display = 'none'

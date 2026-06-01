@@ -21,12 +21,35 @@ const faqs = [
   { q: "What brands of aluminium do you use?", a: "We use premium grade aluminium profiles from trusted manufacturers." },
 ];
 
+function sanitizeInput(input: string): string {
+  return input.replace(/[<>"'&]/g, (char) => {
+    const map: Record<string, string> = { "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#x27;", "&": "&amp;" };
+    return map[char];
+  }).slice(0, 1000);
+}
+
 function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [submitting, setSubmitting] = useState(false);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    const form = e.target as HTMLFormElement;
+    const name = sanitizeInput((form.elements.namedItem("name") as HTMLInputElement)?.value || "");
+    const email = sanitizeInput((form.elements.namedItem("email") as HTMLInputElement)?.value || "");
+    const phone = sanitizeInput((form.elements.namedItem("phone") as HTMLInputElement)?.value || "");
+    const details = sanitizeInput((form.elements.namedItem("details") as HTMLTextAreaElement)?.value || "");
+
+    if (!name || !email || !phone) {
+      toast.error("Please fill in all required fields.");
+      setSubmitting(false);
+      return;
+    }
+
+    console.log("Contact form submitted:", { name, email, phone, details });
     toast.success("Request sent! We'll get back to you within 24 hours.");
-    (e.target as HTMLFormElement).reset();
+    form.reset();
+    setSubmitting(false);
   };
   return (
     <>
@@ -37,17 +60,17 @@ function ContactPage() {
           <form onSubmit={handleSubmit} className="lg:col-span-3 p-10 rounded-3xl bg-card border border-border shadow-elegant space-y-6">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Request a Quote</h2>
             <p className="text-muted-foreground mb-4">Fill out the form and our team will respond within 24 hours.</p>
-            <div className="grid md:grid-cols-2 gap-5">
-              <div><label className="block text-sm font-semibold mb-2">Full Name *</label><input required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
-              <div><label className="block text-sm font-semibold mb-2">Email *</label><input type="email" required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
-              <div><label className="block text-sm font-semibold mb-2">Phone *</label><input required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
-              <div><label className="block text-sm font-semibold mb-2">Service Interest</label>
-                <select className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none">
+              <div className="grid md:grid-cols-2 gap-5">
+              <div><label htmlFor="name" className="block text-sm font-semibold mb-2">Full Name *</label><input id="name" name="name" required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
+              <div><label htmlFor="email" className="block text-sm font-semibold mb-2">Email *</label><input id="email" name="email" type="email" required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
+              <div><label htmlFor="phone" className="block text-sm font-semibold mb-2">Phone *</label><input id="phone" name="phone" required className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
+              <div><label htmlFor="service" className="block text-sm font-semibold mb-2">Service Interest</label>
+                <select id="service" name="service" className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none">
                   <option>Aluminium Works</option><option>Glass Works</option><option>Steel Works</option><option>Maintenance</option><option>Design Consultancy</option><option>Material Supply</option>
                 </select>
               </div>
             </div>
-            <div><label className="block text-sm font-semibold mb-2">Project Details / Budget</label><textarea rows={5} className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
+            <div><label htmlFor="details" className="block text-sm font-semibold mb-2">Project Details / Budget</label><textarea id="details" name="details" rows={5} className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary outline-none" /></div>
             <div>
               <label className="block text-sm font-semibold mb-2">Preferred Contact Method</label>
               <div className="flex gap-6">
@@ -57,7 +80,7 @@ function ContactPage() {
               </div>
             </div>
             <div><label className="block text-sm font-semibold mb-2">Upload drawings or reference (optional)</label><input type="file" className="w-full text-sm" /></div>
-            <button type="submit" className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full gradient-primary text-white text-lg font-bold shadow-glow hover:scale-[1.02] transition-transform">Send Request <Send className="h-5 w-5" /></button>
+            <button type="submit" disabled={submitting} className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full gradient-primary text-white text-lg font-bold shadow-glow hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? "Sending..." : "Send Request"} {!submitting && <Send className="h-5 w-5" />}</button>
           </form>
 
           <div className="lg:col-span-2 space-y-5">

@@ -64,7 +64,7 @@ export function Navbar() {
             <img 
               src="/logo/alufusion-logo.png" 
               alt="867 ALUFUSION Logo" 
-              className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+              className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105" loading="eager"
               onError={(e) => {
                 const img = e.target as HTMLImageElement
                 img.style.display = 'none'

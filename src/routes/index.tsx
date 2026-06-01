@@ -62,7 +62,7 @@ function Index() {
       {/* HERO - USING YOUR hd.jpeg IMAGE */}
       <section className="relative min-h-screen flex items-center text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hd.jpeg" alt="Glass facade" className="w-full h-full object-cover" />
+          <img src="/images/hd.jpeg" alt="Glass facade" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/65 to-black/50" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-32 w-full">
@@ -124,7 +124,7 @@ function Index() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
             {/* CHANGED: Now using your local alluminium.jpeg */}
-            <img src="/images/alluminium.jpeg" alt="Aluminium installation" className="rounded-3xl shadow-elegant w-full" />
+            <img src="/images/alluminium.jpeg" alt="Aluminium installation" className="rounded-3xl shadow-elegant w-full" loading="lazy" />
             <div className="absolute -bottom-8 -right-8 hidden md:block bg-card border border-border p-6 rounded-2xl shadow-elegant max-w-[200px]">
               <div className="text-4xl font-extrabold text-primary">5+</div>
               <div className="text-sm text-muted-foreground">Years of crafting excellence in Tanzania</div>
@@ -218,7 +218,7 @@ function Index() {
               { title: "Hotel Lobby Glass Partitions", img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=80" },
             ].map((p) => (
               <Link to="/projects" key={p.title} className="group relative overflow-hidden rounded-2xl aspect-[4/5] block">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">{p.title}</h3>

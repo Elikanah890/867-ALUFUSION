@@ -244,7 +244,7 @@ function ProjectsPage() {
       {/* PAGE HEADER - SAME BACKGROUND AS HOME */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hd.jpeg" alt="Background" className="w-full h-full object-cover" />
+          <img src="/images/hd.jpeg" alt="Background" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-black/75" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
@@ -298,7 +298,7 @@ function ProjectsPage() {
                   <img 
                     src={p.img} 
                     alt={p.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = "https://placehold.co/600x400/1a1a2e/EA580C?text=Project+Image";
                     }}
